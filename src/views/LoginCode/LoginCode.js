@@ -1,48 +1,66 @@
 import React from "react";
-import Timer from "./components/Timer/Timer";
-import { Grid, Paper, TextField, Button } from "@material-ui/core";
+import {Timer} from "./components/Timer/Timer";
+import { Grid, Paper, TextField, Button, Box, IconButton, Typography } from "@material-ui/core";
+import { styles } from "./LoginCode.style"
+import { SectionWrapper } from "../../components/Wrapper/SectionWrapper/SectionWrapper";
+import ArrowBackIcon  from '@material-ui/icons/ArrowBack';
+import { TextInput } from "../../components/common";
+import { useTimer } from "react-timer-hook";
 
 const LoginCode = () => {
   const paperStyle = {
     padding: 20,
-    height: "30vh",
     width: 280,
     margin: "200px auto",
     direction: "rtl",
   };
-  const btnstyle = { margin: "50px 0" };
-  const textFieldStyle = { color: "blue", fontSize: 20 };
+
+
+  const classes = styles()
+
+  const stopWatchOffset = new Date();
+  const startTime = stopWatchOffset.setSeconds(
+    stopWatchOffset.getSeconds() + 300
+  );
+
+  const { seconds, minutes, isRunning, restart } = useTimer({
+    expiryTimestamp: startTime,
+  });
+  
   return (
     <>
       <Grid>
-        <Paper elevation={10} style={paperStyle}>
-          <TextField
-            style={textFieldStyle}
-            label="شماره همراه"
-            placeholder="شماره همراه خود را وارد کنید"
-            fullWidth
-            required
-            InputProps={{
-              style: {
-                color: "#000",
-                label: {
-                  color: "yellow",
-                },
-              },
-            }}
-          />
-          <Button
-            type="submit"
-            color="primary"
-            variant="contained"
-            style={btnstyle}
-            fullWidth
-          >
-            دریافت کد
-          </Button>
-        </Paper>
+        <SectionWrapper style={paperStyle}>
+
+        
+          <Box display="flex" justifyContent="flex-end">
+            <IconButton aria-label="delete">
+              <ArrowBackIcon />
+            </IconButton>
+          </Box>
+          <Box className={classes.alert} display="flex" justifyContent="center" my={3}>
+            <Typography > 09397233907 </Typography>
+          </Box>
+
+          <TextInput title="کد تایید"/>
+          <Box display="flex" justifyContent="space-between" my={4}>
+
+            <Button
+              type="submit"
+              color="primary"
+              variant="contained"
+              
+            >
+              ارسال کد
+            </Button>
+          
+            <Timer seconds={seconds} minutes={minutes} />
+          
+          </Box>
+
+          </SectionWrapper>
       </Grid>
-      <Timer initialMinute="2" initialSeconds="" />
+     
     </>
   );
 };
