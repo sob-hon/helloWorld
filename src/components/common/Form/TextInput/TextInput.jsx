@@ -4,7 +4,7 @@ import { Box, FormControl, InputLabel } from '@material-ui/core'
 import { CustomTextInput } from './TextInput.style'
 
 
-const TextInput= ({title}) => {
+const TextInput= ({title,...other}) => {
     return (
         <FormControl fullWidth >
          
@@ -13,7 +13,7 @@ const TextInput= ({title}) => {
                 </InputLabel>
             
 
-            <CustomTextInput fullWidth  id="my" />
+            <CustomTextInput fullWidth  id="my" {...other} />
         </FormControl>
     )
 }

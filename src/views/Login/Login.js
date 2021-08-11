@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { Grid, Paper, TextField, Button, Box } from "@material-ui/core";
 import AppleIcon from "@material-ui/icons/Apple";
 import { SectionWrapper } from "../../components/Wrapper/SectionWrapper/SectionWrapper";
 import { TextInput } from "../../components/common";
 
 import {useHistory}  from "react-router-dom"
+import { PhoneContext } from './../../App';
 
 const Login = () => {
 
   let history = useHistory();
+  const {setPhone} = useContext(PhoneContext)
 
   const [phoneNumber, setPhoneNumber] = useState();
   const paperStyle = {
@@ -21,7 +23,7 @@ const Login = () => {
   const textFieldStyle = { color: "blue", fontSize: 20 };
   
   const numberEnteredHandler = (event) => {
-    setPhoneNumber(+event.target.value)
+    setPhoneNumber(event.target.value)
   }
 
   return (
@@ -30,13 +32,16 @@ const Login = () => {
       <Grid>
         <Box py={2}>
           <SectionWrapper style={paperStyle}>
-              <TextInput title="شماره همراه"/>
+              <TextInput onChange={numberEnteredHandler} title="شماره همراه"/>
               <Button
                 type="submit"
                 color="primary"
                 variant="contained"
                 style={btnstyle}
-                onClick={() => history.push("/verificatioCode")}
+                onClick={() => {
+                  setPhone(phoneNumber)
+                  history.push("/verificatioCode")
+                }}
                 fullWidth
               >
                 دریافت کد

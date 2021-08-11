@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useContext} from "react";
 import {Timer} from "./components/Timer/Timer";
 import { Grid, Paper, TextField, Button, Box, IconButton, Typography } from "@material-ui/core";
 import { styles } from "./LoginCode.style"
@@ -8,9 +8,11 @@ import { TextInput } from "../../components/common";
 import { useTimer } from "react-timer-hook";
 
 import {useHistory}  from "react-router-dom"
+import { PhoneContext } from './../../App';
 
 const LoginCode = () => {
 
+  const {phoneNum} = useContext(PhoneContext)
   let history = useHistory();
 
   const paperStyle = {
@@ -44,7 +46,7 @@ const LoginCode = () => {
             </IconButton>
           </Box>
           <Box className={classes.alert} display="flex" justifyContent="center" my={3}>
-            <Typography > 09397233907 </Typography>
+            <Typography > {phoneNum} </Typography>
           </Box>
 
           <TextInput title="کد تایید"/>
