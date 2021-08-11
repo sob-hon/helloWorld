@@ -7,7 +7,12 @@ import ArrowBackIcon  from '@material-ui/icons/ArrowBack';
 import { TextInput } from "../../components/common";
 import { useTimer } from "react-timer-hook";
 
+import {useHistory}  from "react-router-dom"
+
 const LoginCode = () => {
+
+  let history = useHistory();
+
   const paperStyle = {
     padding: 20,
     width: 280,
@@ -34,7 +39,7 @@ const LoginCode = () => {
 
         
           <Box display="flex" justifyContent="flex-end">
-            <IconButton aria-label="delete">
+            <IconButton aria-label="delete" onClick={() => history.push("/")}>
               <ArrowBackIcon />
             </IconButton>
           </Box>

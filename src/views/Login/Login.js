@@ -4,7 +4,12 @@ import AppleIcon from "@material-ui/icons/Apple";
 import { SectionWrapper } from "../../components/Wrapper/SectionWrapper/SectionWrapper";
 import { TextInput } from "../../components/common";
 
+import {useHistory}  from "react-router-dom"
+
 const Login = () => {
+
+  let history = useHistory();
+
   const [phoneNumber, setPhoneNumber] = useState();
   const paperStyle = {
     padding: 20,
@@ -31,6 +36,7 @@ const Login = () => {
                 color="primary"
                 variant="contained"
                 style={btnstyle}
+                onClick={() => history.push("/verificatioCode")}
                 fullWidth
               >
                 دریافت کد
