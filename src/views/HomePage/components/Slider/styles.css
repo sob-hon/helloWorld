@@ -31,3 +31,23 @@
   height: 100%;
   object-fit: cover;
 }
+
+.slide{
+
+  margin-top: 100px;
+  width: 90%;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .slide{
+
+    width: 100%;
+
+  }
+  
+}
+.color-slide{
+  background-color: red;
+}
