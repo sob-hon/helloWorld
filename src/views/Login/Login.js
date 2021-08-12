@@ -1,18 +1,15 @@
-import React, { useState,useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Grid, Paper, TextField, Button, Box } from "@material-ui/core";
 import AppleIcon from "@material-ui/icons/Apple";
 import { SectionWrapper } from "../../components/Wrapper/SectionWrapper/SectionWrapper";
 import { TextInput } from "../../components/common";
-
-import {useHistory}  from "react-router-dom"
-import { PhoneContext } from './../../App';
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { registerAction } from "../../Redux/Register/action";
 
 const Login = () => {
-
+  const dispatch = useDispatch();
   let history = useHistory();
-  const {setPhone} = useContext(PhoneContext)
-
-  const [phoneNumber, setPhoneNumber] = useState();
   const paperStyle = {
     padding: 20,
     width: 280,
@@ -20,35 +17,38 @@ const Login = () => {
     direction: "rtl",
   };
   const btnstyle = { margin: "40px 0" };
-  const textFieldStyle = { color: "blue", fontSize: 20 };
-  
-  const numberEnteredHandler = (event) => {
-    setPhoneNumber(event.target.value)
-  }
 
+  const numberEnteredHandler = (event) => {
+    dispatch(registerAction(event.target.value));
+  };
+
+  console.log(phoneNumber);
   return (
     <>
       <AppleIcon />
       <Grid>
         <Box py={2}>
           <SectionWrapper style={paperStyle}>
-              <TextInput onChange={numberEnteredHandler} title="شماره همراه"/>
-              <Button
-                type="submit"
-                color="primary"
-                variant="contained"
-                style={btnstyle}
-                onClick={() => {
-                  setPhone(phoneNumber)
-                  history.push("/verificatioCode")
-                }}
-                fullWidth
-              >
-                دریافت کد
-              </Button>
+            <TextInput
+              onChange={numberEnteredHandler}
+              title="شماره همراه"
+              value={phoneNumber}
+            />
+            <Button
+              type="submit"
+              color="primary"
+              variant="contained"
+              style={btnstyle}
+              onClick={() => {
+                
+                history.push("/verificatioCode");
+              }}
+              fullWidth
+            >
+              دریافت کد
+            </Button>
           </SectionWrapper>
         </Box>
-
       </Grid>
     </>
   );
