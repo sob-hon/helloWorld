@@ -3,7 +3,7 @@ import Login from "./views/Login/Login";
 import CodeLogin from './views/LoginCode/LoginCode';
 import {Switch,Route}  from "react-router-dom"
 import React,{createContext,useState} from "react"
-
+import Slider from './views/HomePage/components/Slider/Slider'
 
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Login}/>
         <Route exact path="/verificatioCode" component={CodeLogin}/>
+        <Route exact path="/homepage" component={Slider}/>
       </Switch>
     </>
   ) ;

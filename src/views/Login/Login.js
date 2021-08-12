@@ -22,7 +22,6 @@ const Login = () => {
     dispatch(registerAction(event.target.value));
   };
 
-  console.log(phoneNumber);
   return (
     <>
       <AppleIcon />
@@ -32,7 +31,7 @@ const Login = () => {
             <TextInput
               onChange={numberEnteredHandler}
               title="شماره همراه"
-              value={phoneNumber}
+              
             />
             <Button
               type="submit"
