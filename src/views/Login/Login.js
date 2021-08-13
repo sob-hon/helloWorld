@@ -39,7 +39,6 @@ const Login = () => {
               variant="contained"
               style={btnstyle}
               onClick={() => {
-                
                 history.push("/verificatioCode");
               }}
               fullWidth

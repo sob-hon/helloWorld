@@ -19,7 +19,7 @@ import { useHistory } from "react-router-dom";
 
 const LoginCode = () => {
   let history = useHistory();
-  const phoneNumber = useSelector((state) => state.registerReducer);
+  const data = useSelector((state) => state.registerReducer);
   const paperStyle = {
     padding: 20,
     width: 280,
@@ -31,12 +31,14 @@ const LoginCode = () => {
 
   const stopWatchOffset = new Date();
   const startTime = stopWatchOffset.setSeconds(
-    stopWatchOffset.getSeconds() + 300
+    stopWatchOffset.getSeconds() + 10
   );
 
   const { seconds, minutes, isRunning, restart } = useTimer({
     expiryTimestamp: startTime,
   });
+
+  
 
   return (
     <>
@@ -53,7 +55,7 @@ const LoginCode = () => {
             justifyContent="center"
             my={3}
           >
-            <Typography> {phoneNumber} </Typography>
+            <Typography>{data.phoneNumber}</Typography>
           </Box>
 
           <TextInput title="کد تایید" />
@@ -61,8 +63,11 @@ const LoginCode = () => {
             <Button type="submit" color="primary" variant="contained">
               ارسال کد
             </Button>
-
-            <Timer seconds={seconds} minutes={minutes} />
+            {isRunning ? (
+              <Timer seconds={seconds} minutes={minutes} />
+            ) : (
+              <Box>Hello</Box>
+            )}
           </Box>
         </SectionWrapper>
       </Grid>
