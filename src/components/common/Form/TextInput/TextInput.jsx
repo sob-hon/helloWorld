@@ -7,7 +7,7 @@ const TextInput = ({ title, name, ...other }) => {
   return (
     <FormControl fullWidth>
       <Field name={name}>
-        {/* {({
+        {({
           field, // { name, value, onChange, onBlur }
           form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
           meta,
@@ -26,7 +26,7 @@ const TextInput = ({ title, name, ...other }) => {
               <div className={classes.error}>{meta.error}</div>
             )}
             </>
-        )} */}
+        )}
       </Field>
     </FormControl>
   );

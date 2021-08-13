@@ -7,8 +7,10 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { registerAction } from "../../Redux/Register/action";
 import { Formik, Form } from "formik";
+import SignUpUseQuery from "../../core/services/api/SignUp.api.js";
 
 const SignUp = () => {
+  const signUp = SignUpUseQuery();
   const dispatch = useDispatch();
   let history = useHistory();
   const paperStyle = {
@@ -30,24 +32,23 @@ const SignUp = () => {
         <Box py={2}>
           <SectionWrapper style={paperStyle}>
             <Formik
-              initialValues={{ phone: "" }}
+              initialValues={{ phone_number: "" }}
               onSubmit={(values) => {
-                console.log(values);
+                signUp.mutate(values, {
+                  onSuccess: () => {
+                    dispatch(registerAction(values));
+                    history.push("/verificatioCode");
+                  },
+                });
               }}
             >
               <Form>
-                {/* <TextInput
-                  name="phone_number"
-                  title="شماره همراه"
-                /> */}
+                <TextInput name="phone_number" title="شماره همراه" />
                 <Button
                   type="submit"
                   color="primary"
                   variant="contained"
                   style={btnstyle}
-                  onClick={() => {
-                    history.push("/verificatioCode");
-                  }}
                   fullWidth
                 >
                   دریافت کد
