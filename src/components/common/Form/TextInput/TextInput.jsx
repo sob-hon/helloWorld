@@ -7,7 +7,7 @@ const TextInput = ({ title, name, ...other }) => {
   return (
     <FormControl fullWidth>
       <Field name={name}>
-        {/* {({
+        {({
           field, // { name, value, onChange, onBlur }
           form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
           meta,
@@ -18,15 +18,15 @@ const TextInput = ({ title, name, ...other }) => {
             </InputLabel>
             <CustomTextInput
               fullWidth
-              className={meta.touched && meta.error ? classes.inputError : ""}
+              className={meta.touched && meta.error ? "" : ""}
               {...field}
               {...other}
             />
             {meta.touched && meta.error && (
-              <div className={classes.error}>{meta.error}</div>
+              <div className={""}>{meta.error}</div>
             )}
             </>
-        )} */}
+        )}
       </Field>
     </FormControl>
   );

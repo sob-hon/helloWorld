@@ -17,6 +17,7 @@ import { useTimer } from "react-timer-hook";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import axios from 'axios'
+import { Formik, Form } from "formik";
 
 const LoginCode = () => {
   let history = useHistory();
@@ -58,8 +59,16 @@ const LoginCode = () => {
           >
             <Typography>{data.phoneNumber}</Typography>
           </Box>
-
-          <TextInput title="کد تایید" />
+          <Formik
+              initialValues={{ phone_number: "" }}
+              onSubmit={(values) => {
+               
+              }}
+            >
+            <Form>
+              <TextInput title="کد تایید" />
+            </Form>
+            </Formik>
           <Box display="flex" justifyContent="space-between" my={4}>
             <Button type="submit" color="primary" variant="contained">
               ارسال کد

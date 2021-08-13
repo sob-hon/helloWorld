@@ -7,7 +7,7 @@ const initialState = {
 const registerReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_PHONENUMBER:
-      return { phoneNumber: action.payLoad };
+      return { ...action.payLoad };
     default:
       return state;
   }
