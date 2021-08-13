@@ -16,6 +16,7 @@ import { TextInput } from "../../components/common";
 import { useTimer } from "react-timer-hook";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import axios from 'axios'
 
 const LoginCode = () => {
   let history = useHistory();

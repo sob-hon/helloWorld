@@ -6,8 +6,9 @@ import { TextInput } from "../../components/common";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { registerAction } from "../../Redux/Register/action";
+import { Formik, Form } from "formik";
 
-const Login = () => {
+const SignUp = () => {
   const dispatch = useDispatch();
   let history = useHistory();
   const paperStyle = {
@@ -28,23 +29,31 @@ const Login = () => {
       <Grid>
         <Box py={2}>
           <SectionWrapper style={paperStyle}>
-            <TextInput
-              onChange={numberEnteredHandler}
-              title="شماره همراه"
-              
-            />
-            <Button
-              type="submit"
-              color="primary"
-              variant="contained"
-              style={btnstyle}
-              onClick={() => {
-                history.push("/verificatioCode");
+            <Formik
+              initialValues={{ phone: "" }}
+              onSubmit={(values) => {
+                console.log(values);
               }}
-              fullWidth
             >
-              دریافت کد
-            </Button>
+              <Form>
+                {/* <TextInput
+                  name="phone_number"
+                  title="شماره همراه"
+                /> */}
+                <Button
+                  type="submit"
+                  color="primary"
+                  variant="contained"
+                  style={btnstyle}
+                  onClick={() => {
+                    history.push("/verificatioCode");
+                  }}
+                  fullWidth
+                >
+                  دریافت کد
+                </Button>
+              </Form>
+            </Formik>
           </SectionWrapper>
         </Box>
       </Grid>
@@ -52,4 +61,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
