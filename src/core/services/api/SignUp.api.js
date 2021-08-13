@@ -8,14 +8,13 @@ const SignUpQuery = async (value) => {
   const options = {
     method: "post",
     headers: new Headers({'content-type': 'application/json'}),
-    mode: 'no-cors',
     body:JSON.stringify(value)
 };
   return await fetch(signUpUrl,options).then((res) => {
     if(res.ok){
       return JSON.parse(res)
     }else{
-      throw Error("fuckkkk")
+      throw Error(".....")
     }
   })
  
