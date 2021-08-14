@@ -12,16 +12,19 @@ import AppleIcon from '@material-ui/icons/Apple';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    width: '100%',
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
+
   title: {
     flexGrow: 1,
     textAlign: 'center',
+    color: '#717485',
+    fontFamily: 'BNazanin'
   },
   creditBtn: {
-    color: '#000'
+    borderRadius: '7px',
+    backgroundColor: 'black',
+    color: '#fff'
   },
 }));
 

@@ -6,7 +6,7 @@ import "swiper/swiper.min.css";
 import "swiper/components/pagination/pagination.min.css"
 import "swiper/components/navigation/navigation.min.css"
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import {styles} from "./styles"
+import {styles} from "./Styles"
 import SwiperCore, {Pagination,Navigation} from 'swiper/core';
 import { useMediaQuery } from "@material-ui/core";
 

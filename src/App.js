@@ -5,6 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import React from "react";
 import HomePage from "./views/HomePage/HomePage.jsx";
 import { QueryClient, QueryClientProvider } from "react-query";
+import ViewMore from './views/ViewMore/ViewMore';
 
 const queryClient = new QueryClient();
 
@@ -16,6 +17,7 @@ function App() {
         <Route exact path="/" component={SignUp} />
         <Route exact path="/verificatioCode" component={CodeLogin} />
         <Route exact path="/homepage" component={HomePage} />
+        <Route excat path="/viewmore" component={ViewMore} />
       </Switch>
     </QueryClientProvider>
     </>
