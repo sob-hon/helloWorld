@@ -6,6 +6,7 @@ import React from "react";
 import HomePage from "./views/HomePage/HomePage.jsx";
 import { QueryClient, QueryClientProvider } from "react-query";
 import ViewMore from './views/ViewMore/ViewMore';
+import Subscription from './views/Subscription/Subscrption';
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,7 @@ function App() {
         <Route exact path="/verificatioCode" component={CodeLogin} />
         <Route exact path="/homepage" component={HomePage} />
         <Route excat path="/viewmore" component={ViewMore} />
+        <Route excat path="/subscription" component={Subscription} />
       </Switch>
     </QueryClientProvider>
     </>
