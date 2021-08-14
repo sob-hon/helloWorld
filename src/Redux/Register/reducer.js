@@ -1,7 +1,7 @@
 import { ADD_PHONENUMBER } from "./action";
 
 const initialState = {
-  phoneNumber: "",
+  phone_number: "",
 };
 
 const registerReducer = (state = initialState, action) => {

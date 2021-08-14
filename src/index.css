@@ -1,16 +1,17 @@
 @font-face {
-  font-family: "BNazanin";
-  src: url('./fonts/IRAN\ Sans\ Regular\ \(mmrostami.blog.ir\).ttf');
+  font-family: "iranYekan";
+  src: url("./Assets/fonts/iranYekan/IRANYekanRegular.ttf");
 }
 
 * {
-  font-family: "BNazanin";
+  font-family: "iranYekan" !important;
 }
 
 body {
   margin: 0;
-  font-family: "BNazanin";
+  font-family: "iranYekan" !important;
   direction: rtl;
+  background-color: #fff !important;
 }
 
 code {

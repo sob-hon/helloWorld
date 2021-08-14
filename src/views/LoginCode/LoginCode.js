@@ -1,10 +1,7 @@
-import React, { useContext } from "react";
+import React, { useEffect } from "react";
 import { Timer } from "./components/Timer/Timer";
 import {
   Grid,
-  Paper,
-  TextField,
-  Button,
   Box,
   IconButton,
   Typography,
@@ -16,12 +13,33 @@ import { TextInput } from "../../components/common";
 import { useTimer } from "react-timer-hook";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import axios from 'axios'
 import { Formik, Form } from "formik";
+import LoginUseQuery from './../../core/services/api/Login.api';
+import SignUpUseQuery from './../../core/services/api/SignUp.api';
+import { CustomButton } from "../../components/common/Form/Button/Button";
+import { showToast } from './../../core/utils/show-toast';
+import { useLayoutEffect } from "react";
 
 const LoginCode = () => {
+
+  const login = LoginUseQuery()
+  const signUp = SignUpUseQuery();
+
+
+
   let history = useHistory();
   const data = useSelector((state) => state.registerReducer);
+
+
+  useLayoutEffect(() => {
+    if(!data.phone_number){
+      showToast(["لطفا ابتدا وارد شوید "],"info")
+      history.push("/")
+    }
+  },[])
+
+  console.log("data",data)
+
   const paperStyle = {
     padding: 20,
     width: 280,
@@ -57,28 +75,55 @@ const LoginCode = () => {
             justifyContent="center"
             my={3}
           >
-            <Typography>{data.phoneNumber}</Typography>
+            <Typography>{data.phone_number}</Typography>
           </Box>
           <Formik
-              initialValues={{ phone_number: "" }}
+              initialValues={{ code:"" }}
               onSubmit={(values) => {
-               
+                login.mutate({...values,phone_number:data.phone_number},{
+                  onSuccess:(result) => {
+
+                    showToast([result.data.message],"success")
+                    localStorage.setItem("token",result.data.token)
+                    history.push("/homepage")
+                  }
+                })
               }}
             >
             <Form>
-              <TextInput title="کد تایید" />
-            </Form>
-            </Formik>
+              <TextInput name="code" title="کد تایید" />
+
           <Box display="flex" justifyContent="space-between" my={4}>
-            <Button type="submit" color="primary" variant="contained">
-              ارسال کد
-            </Button>
+              <CustomButton 
+                    color="primary"
+                    variant="contained"
+                    text="ارسال کد"
+                    loading={login.isLoading}
+              />
             {isRunning ? (
               <Timer seconds={seconds} minutes={minutes} />
             ) : (
-              <Box>Hello</Box>
+              <CustomButton
+                type="text"
+                color="primary"
+                variant="contained"
+                text="ارسال مجدد کد"
+                loading={signUp.isLoading}
+                onClick={() => {
+                  signUp.mutate(data,{
+                    onSuccess:(result) => {
+                      showToast([result.data.message],"success")
+                      restart(
+                        startTime
+                      )
+                    }
+                  })
+                }}
+              />
             )}
           </Box>
+          </Form>
+          </Formik>
         </SectionWrapper>
       </Grid>
     </>
