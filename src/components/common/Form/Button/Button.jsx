@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
 import { ButtonProps } from '@material-ui/core'
-import { styles } from './Styles'
+import { styles } from './Button.style'
 import CircularProgress  from '@material-ui/core/CircularProgress';
 
 
