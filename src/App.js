@@ -3,20 +3,17 @@ import SignUp from "./views/SignUp/SignUp";
 import CodeLogin from "./views/LoginCode/LoginCode";
 import { Switch, Route } from "react-router-dom";
 import React from "react";
-import HomePage from "./views/HomePage/HomePage.jsx";
+import HomePage from "./views/HomePage/HomePage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import ViewMore from './views/ViewMore/ViewMore';
 import Subscription from './views/Subscription/Subscrption';
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-import { jssPreset, StylesProvider, ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/core/styles';
 import { CssBaseline } from "@material-ui/core";
-import { createMuiTheme } from '@material-ui/core/styles/createMuiTheme';
-
-import purple from '@material-ui/core/colors/purple';
-import green from '@material-ui/core/colors/green';
-
 import theme from "./theme.js"
+import Profile from './views/Profile/Profile';
+
 const queryClient = new QueryClient();
 
 
@@ -46,6 +43,7 @@ function App() {
         <Route exact path="/homepage" component={HomePage} />
         <Route excat path="/viewmore" component={ViewMore} />
         <Route excat path="/subscription" component={Subscription} />
+        <Route excat path="/profile" component={Profile} />
       </Switch>
    
       </ThemeProvider>

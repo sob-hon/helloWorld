@@ -2,29 +2,26 @@ import axios from "axios";
 
 axios.interceptors.request.use(
   (config) => {
-
-    config.headers.Authorization = "JWT " + localStorage.getItem("token");
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = "JWT " + token;
+    }
 
     return config;
   },
-  (err) => {
-  }
+  (err) => {}
 );
-
 
 axios.interceptors.response.use(
   (response) => {
     return response;
   },
   async (error) => {
-   
+    if (error.response.status === 401) {
+      // clearStorage();
+      console.log("we have error ,401");
 
-
-    if (error.response.status === 401 ) {
-     // clearStorage();
-     console.log("we have error ,401")
-
-     // logout();
+      // logout();
     }
 
     const expectedError =
@@ -32,7 +29,7 @@ axios.interceptors.response.use(
       error.response.state >= 400 &&
       error.response.status < 500;
     if (!expectedError) {
-      console.log("we have error ,400,500,,")
+      console.log("we have error ,400,500,,");
       // tweak it later
       //console.log(error.response.data.message[0]);
       try {
