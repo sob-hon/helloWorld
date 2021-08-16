@@ -2,24 +2,27 @@ import { Box, Grid, Typography } from "@material-ui/core";
 import React from "react";
 import AppBar from "../../components/common/AppBar/AppBar.jsx";
 import ApplicationCard from "./components/ApplicationCard/ApplicationCard";
+import { useStyles } from "./ViewMore.style.js";
 
 const ViewMore = () => {
+  const classes = useStyles();
   return (
     <>
       <AppBar></AppBar>
-      <Box mt={8} boxSizing='border-box' style={{ fontSize: "18px", marginRight: '4%'}}>
-        <Typography
-          component="h2"
-          variant=""
-          color="#212529"
-          fontWeight="200"
-        >
+      <Box
+        className={classes.header}
+        mt={8}
+      >
+        <Typography component="h2" variant="" className={classes.headerText}>
           برنامه‌های پیشنهادی برای شما
         </Typography>
       </Box>
-      
-      <Box width="90%"  boxSizing="border-box" marginRight="auto" marginLeft="auto" >
-        <Box mt={3} >
+
+      <Box
+        width="90%"
+        className={classes.cardWrapper}
+      >
+        <Box mt={3}>
           <Grid container spacing={3}>
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(() => {
               return (

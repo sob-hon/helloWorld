@@ -1,12 +1,11 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { Box } from "@material-ui/core";
-import styles from './Styles'
+import useStyles from './ApplicationCard.style'
 
 const ApplicationCard = () => {
-  const classes = styles();
+  const classes = useStyles();
 
   return (
     <Card className={classes.root} variant="outlined">
@@ -21,7 +20,6 @@ const ApplicationCard = () => {
           </Box>
         </Box>
       </CardContent>
-      {/* <CardActions></CardActions> */}
     </Card>
   );
 };

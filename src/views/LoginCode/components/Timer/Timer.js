@@ -1,3 +1,13 @@
+import React from 'react';
+
+const Timer = ({seconds,minutes}) => {
+  return (  
+    <div>
+     <span >{seconds} </span> : <span > {minutes} </span>
+    </div>
+  );
+}
+
 // import { Typography } from '@material-ui/core';
 // import React, { useState, useEffect } from 'react'
 
@@ -35,17 +45,4 @@
 // }
 
 // export default Timer;
-
-import React from 'react';
-
-
-
-const Timer = ({seconds,minutes}) => {
-  return (  
-    <div>
-     <span >{seconds} </span> : <span > {minutes} </span>
-    </div>
-  );
-}
- 
 export { Timer }

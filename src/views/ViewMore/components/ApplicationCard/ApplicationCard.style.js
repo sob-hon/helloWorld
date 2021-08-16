@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 
-const styles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     fontFamily: "BNazanin",
     boxShadow: "-2px 2px 10px rgb(0 0 0 / 10%)",
@@ -30,4 +30,4 @@ const styles = makeStyles((theme) => ({
   },
 }));
 
-export default styles;
+export default useStyles;

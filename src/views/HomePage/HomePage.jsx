@@ -1,13 +1,8 @@
 import ButtonAppBar from '../../components/common/AppBar/AppBar'
-import { makeStyles } from '@material-ui/core/styles';
 import Slider from './components/Slider/Slider';
 import AppListUseQuery from '../../core/services/api/AppList.api'
+import { useStyles } from './HomePage.style';
 
-const useStyles = makeStyles(() => ({
-    root: {
-        backgroundColor: '#f9fafd'
-    }
-}));
 
 const HomePage = () => {
     const appList = AppListUseQuery();
