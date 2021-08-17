@@ -8,13 +8,16 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { useStyles } from "./Slider.style";
 import SwiperCore, { Pagination, Navigation } from "swiper/core";
 import { useMediaQuery } from "@material-ui/core";
+import AppListUseQuery from "../../../../core/services/api/AppList.api";
 
 SwiperCore.use([Pagination, Navigation]);
 
-export default function Slider() {
+const Slider = (props) => {
   const classes = useStyles();
   const matchesmd = useMediaQuery("(max-width:900px)");
   const matchesSm = useMediaQuery("(max-width:600px)");
+  const appList = AppListUseQuery();
+  const { isLoading, isError, data } = appList;
 
   const checkslidesPerView = () => {
     let slideCount = 5;
@@ -52,6 +55,7 @@ export default function Slider() {
         navigation={true}
         className={`mySwiper ${classes.slide}`}
       >
+        {}
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => {
           return (
             <SwiperSlide>
@@ -81,4 +85,6 @@ export default function Slider() {
       </Swiper>
     </Box>
   );
-}
+};
+
+export default Slider;
