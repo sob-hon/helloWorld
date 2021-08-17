@@ -31,7 +31,7 @@ const ButtonAppBar = (props) => {
     <div className={classes.root}>
       <AppBar style={{ boxShadow: "none" }} position="static">
         <Toolbar className={classes.toolbar}>
-          <AppleIcon edge="end" color="black" aria-label="menu" />
+          <AppleIcon edge="end" color="primary" aria-label="menu" />
           <Box mr={3}>
             <Button
               className={classes.creditBtn}

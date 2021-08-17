@@ -23,7 +23,7 @@ export const useStyles = makeStyles((theme) => ({
     "&:hover": {
       transition: "all ease-in-out 0.5s",
       backgroundColor: "#eee",
-      color: "black",
+      color: "#000",
     },
   },
   profileButton: {

@@ -8,7 +8,6 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { useStyles } from "./Slider.style";
 import SwiperCore, { Pagination, Navigation } from "swiper/core";
 import { useMediaQuery } from "@material-ui/core";
-import AppListUseQuery from "../../../../core/services/api/AppList.api";
 
 SwiperCore.use([Pagination, Navigation]);
 
@@ -16,9 +15,7 @@ const Slider = (props) => {
   const classes = useStyles();
   const matchesmd = useMediaQuery("(max-width:900px)");
   const matchesSm = useMediaQuery("(max-width:600px)");
-  const appList = AppListUseQuery();
-  const { isLoading, isError, data } = appList;
-
+  console.log("Props of Slider: ", props);
   const checkslidesPerView = () => {
     let slideCount = 5;
     if (matchesmd) {
@@ -38,9 +35,7 @@ const Slider = (props) => {
         justifyContent="space-between"
         alignItems="center"
       >
-        <Typography variant="" color="primary">
-          برنامه‌های پیشنهادی برای شما
-        </Typography>
+        <Typography color="primary">{props.categoryName}</Typography>
         <Box display="flex" alignItems="center">
           <span className={classes.more}>بیشتر</span>
           <ArrowBackIosIcon></ArrowBackIosIcon>
@@ -50,13 +45,14 @@ const Slider = (props) => {
         slidesPerView={checkslidesPerView()}
         spaceBetween={20}
         slidesPerGroup={1}
-        loop={true}
+        // loop={true}
         loopFillGroupWithBlank={true}
         navigation={true}
         className={`mySwiper ${classes.slide}`}
+        
       >
         {}
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => {
+        {props.categoryData.map((item, index) => {
           return (
             <SwiperSlide>
               <Box className={classes.cardBox}>
@@ -66,7 +62,11 @@ const Slider = (props) => {
                   alignItems="center"
                   className={classes.cardImageContainer}
                 >
-                  <img src="/image/game1.png" className={classes.cardImage} />
+                  <img
+                    src={item.image_url}
+                    alt="یه پیام برای بکند عزیز"
+                    className={classes.cardImage}
+                  />
                 </Box>
                 <Box
                   flexDirection="column"
@@ -75,8 +75,7 @@ const Slider = (props) => {
                   justifyContent="center"
                   className={classes.cardInfo}
                 >
-                  <Typography> نرم افزار </Typography>
-                  <Typography> {item} </Typography>
+                  <Typography>{item.name}</Typography>
                 </Box>
               </Box>
             </SwiperSlide>

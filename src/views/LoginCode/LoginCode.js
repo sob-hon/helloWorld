@@ -35,7 +35,7 @@ const LoginCode = () => {
 
   const stopWatchOffset = new Date();
   const startTime = stopWatchOffset.setSeconds(
-    stopWatchOffset.getSeconds() + 10
+    stopWatchOffset.getSeconds() + 120
   );
 
   const { seconds, minutes, isRunning, restart } = useTimer({
