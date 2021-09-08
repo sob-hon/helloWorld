@@ -18,7 +18,7 @@ import { useLayoutEffect } from "react";
 const LoginCode = () => {
   const login = LoginUseQuery();
   const signUp = SignUpUseQuery();
-
+  const classes = useStyles();
   let history = useHistory();
   const data = useSelector((state) => state.registerReducer);
 
@@ -29,9 +29,8 @@ const LoginCode = () => {
     }
   }, []);
 
-  console.log("data", data);
+  // console.log("data", data);
 
-  const classes = useStyles();
 
   const stopWatchOffset = new Date();
   const startTime = stopWatchOffset.setSeconds(
